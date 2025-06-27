@@ -1,0 +1,239 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  color: theme("colors.neutral.800");
+  background-color: theme("colors.neutral.50");
+  font-family: "Open Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-montserrat);
+  color: theme("colors.neutral.900");
+  font-weight: 700;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+  }
+
+  .bg-texture {
+    background-image: theme("backgroundImage.texture-dots");
+    background-repeat: repeat;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 35.5 91.7% 32.9%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 142.1 70.6% 45.3%; /* Updated to green */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142.1 70.6% 45.3%; /* Updated to green */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222 47% 11%;
+    --secondary: 35.5 91.7% 32.9%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 142.1 70.6% 45.3%; /* Updated to green */
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 142.1 76.3% 48%; /* Updated to green */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl font-semibold tracking-tight md:text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl font-semibold md:text-3xl;
+  }
+
+  h4 {
+    @apply text-xl font-semibold md:text-2xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  small {
+    @apply text-sm text-neutral-500;
+  }
+}
+
+@layer components {
+  /* Button variants */
+  .btn-primary {
+    @apply bg-primary-600 text-white font-medium shadow-md hover:bg-primary-700 focus:ring-2 focus:ring-primary-500/50 focus:ring-offset-2 transition-all duration-200;
+  }
+
+  .btn-secondary {
+    @apply bg-accent-500 text-white font-medium shadow-md hover:bg-accent-600 focus:ring-2 focus:ring-accent-500/50 focus:ring-offset-2 transition-all duration-200;
+  }
+
+  .btn-outline {
+    @apply bg-transparent border-2 border-white text-white font-medium hover:bg-white/10 focus:ring-2 focus:ring-white/50 focus:ring-offset-2 transition-all duration-200;
+  }
+
+  .btn-navy {
+    @apply bg-primary-900 text-white font-medium shadow-md hover:bg-primary-800 focus:ring-2 focus:ring-primary-900/50 focus:ring-offset-2 transition-all duration-200;
+  }
+
+  /* Card variants */
+  .card-highlight {
+    @apply border border-neutral-200 rounded-xl shadow-card hover:shadow-lg transition-all duration-300 bg-white overflow-hidden;
+  }
+
+  .card-feature {
+    @apply border-none rounded-xl shadow-md hover:shadow-lg transition-all duration-300 bg-gradient-to-br from-white to-neutral-50 overflow-hidden;
+  }
+
+  /* Section styling */
+  .section-title {
+    @apply text-3xl font-bold text-primary-900 sm:text-4xl mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-neutral-600 max-w-2xl mx-auto mb-12;
+  }
+
+  /* Badge styling */
+  .badge {
+    @apply inline-flex items-center rounded-full px-4 py-1.5 text-sm font-medium transition-colors;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-800;
+  }
+
+  .badge-secondary {
+    @apply bg-secondary-100 text-secondary-800;
+  }
+
+  .badge-accent {
+    @apply bg-accent-100 text-accent-800;
+  }
+
+  .badge-outline {
+    @apply border border-white/30 bg-black/30 text-white backdrop-blur-sm;
+  }
+
+  .badge-icon {
+    @apply mr-2 h-4 w-4 text-accent-500;
+  }
+
+  /* Hero section */
+  .hero-overlay {
+    @apply absolute inset-0 bg-gradient-to-b from-neutral-900/70 via-neutral-900/40 to-transparent;
+  }
+
+  /* Icon containers */
+  .icon-container {
+    @apply flex h-12 w-12 items-center justify-center rounded-full bg-gradient-primary text-white shadow-md;
+  }
+
+  .icon-container-lg {
+    @apply flex h-16 w-16 items-center justify-center rounded-full bg-gradient-primary text-white shadow-md;
+  }
+
+  /* Feature sections */
+  .feature-grid {
+    @apply grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3;
+  }
+}
+
+/* Ensure proper stacking context */
+.relative {
+  position: relative;
+}
+
+/* Fix z-index stacking for main content sections */
+main section {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure hero content is properly stacked */
+.hero-content {
+  position: relative;
+  z-index: 5;
+}
+
+/* Font family for Open Sans */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap");
